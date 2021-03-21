@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+PGPASSWORD=29H-pNH-mzv-ziT PGUSER=postgres dropdb witter || true
+PGPASSWORD=29H-pNH-mzv-ziT PGUSER=postgres dropdb witter_test || true
+
+PGPASSWORD=29H-pNH-mzv-ziT PGUSER=postgres createdb witter || true
+PGPASSWORD=29H-pNH-mzv-ziT PGUSER=postgres createdb witter_test || true
+
+PGPASSWORD=29H-pNH-mzv-ziT PGUSER=postgres psql -d witter < bin/setup.sql
+PGPASSWORD=29H-pNH-mzv-ziT PGUSER=postgres psql -d witter_test < bin/setup.sql
